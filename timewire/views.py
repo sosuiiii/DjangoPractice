@@ -117,8 +117,9 @@ index = IndexView.as_view()
 
 # 投稿削除＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 # class DeleteView(View):
-#     def delete(request, id):
-#         w = Work.objects.get(id=8)
+#     def delete(self, request, *args, **kwargs):
+#         id = request.POST['id']
+#         w = Work.objects.get(id=id)
 #         print(w)
 #         w.delete()
 #         return redirect(reverse('timewire:index'))
@@ -128,8 +129,16 @@ index = IndexView.as_view()
 
 class DeleteView(generic.edit.DeleteView):
     model = Work
+
     success_url = reverse_lazy('timewire:index')
-    template_name = 'timewire/index.html'
+    # template_name = 'timewire/index.html'
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(request, *args, **kwargs)
+        messages.info(
+            self.request, 'ワークの削除が完了しました')
+        return result
+
 
 delete = DeleteView.as_view()
 # url結びつけ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝

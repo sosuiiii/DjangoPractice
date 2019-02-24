@@ -27,15 +27,17 @@
     <br>
 
 {% for work in works %}
-    <form action="{% url 'timewire:delete' work.id%}" method="post">
     <div class="wrapping">
+        <div>id: {{ work.id }}</div>
      <div>店舗名: {{ work.name }}</div>
      <div>時給: {{ work.price }}</div>
      <div>案件詳細: {{ work.content| linebreaksbr }}</div>
-     <button type="submit">削除</button>
-       {% csrf_token %}
+     <form method="post" action="{% url 'timewire:delete' work.id%}">
+         <button>削除</button>
+         {%  csrf_token %}
+     </form>
+
     </div>
-   </form>
     <br>
 {% endfor %}
 
