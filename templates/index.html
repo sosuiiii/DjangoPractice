@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
-<a href="index">index</a>
-<a href="base">base</a>
-<a href="login">login</a>
-<a href="register">register</a>
+
 {% block content %}index.htmlです<br>base.htmlを継承し、block contentを上書きしています。<br>
 ワーク一覧ページの設定です。
 <br>
@@ -32,11 +29,12 @@
      <div>店舗名: {{ work.name }}</div>
      <div>時給: {{ work.price }}</div>
      <div>案件詳細: {{ work.content| linebreaksbr }}</div>
-     <form method="post" action="{% url 'timewire:delete' work.id%}">
-         <button>削除</button>
+        <form method="post" action="{% url 'timewire:delete' work.id%}">
+         <input type="submit" value="削除">
          {%  csrf_token %}
-     </form>
+        </form>
 
+     <a href="{% url 'timewire:detail' work.id %}">修正する</a>
     </div>
     <br>
 {% endfor %}

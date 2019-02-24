@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}detail.htmlです<br>base.htmlを継承し、block contentを上書きしています。<br>
+ワーク一覧ページの設定です。
+<br>
+<br>
+    {% for w in works %}
+     <form method="post" action="{% url 'timewire:update' %}">
+    {% for field in form %}
+                <div class="field{% if field.errors %} error{% endif %}">
+                    <div class="ui input{% if field.errors %} error{% endif %}">
+                        {{ field }}
+                    </div>
+                    {% if field.errors %}
+                    <p class="red message">{{ field.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+    {% endfor %}
+
+        <input type="submit" value="更新">
+        {%  csrf_token %}
+        </form>
+    {% endfor %}
+
+{% endblock %}

@@ -98,7 +98,7 @@ base = BaseView.as_view()
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         form = PostForm()
-        return render(request, 'index.html', {'works': Work.objects.all().order_by('-date'),'form': form})
+        return render(request, 'index.html', {'works': Work.objects.all().order_by('-date'), 'form': form})
 
     def post(self, request, *args, **kwargs):
         name = request.POST['name']
@@ -113,6 +113,23 @@ class IndexView(View):
 
 
 index = IndexView.as_view()
+
+# 投稿詳細＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+#
+
+
+class DetailView(View):
+    def get(self, request, id, *args, **kwargs):
+        # return render(request, 'detail.html')
+        work = Work.objects.get(work_id=id)
+        context = {'work': work}
+        form = PostForm()
+        return render(request, 'detail.html', {'form': form},context)
+
+
+detail = DetailView.as_view()
+
+
 
 
 # 投稿削除＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -139,6 +156,21 @@ class DeleteView(generic.edit.DeleteView):
             self.request, 'ワークの削除が完了しました')
         return result
 
+# 以下サイト参照
+# https://tech.torico-corp.com/blog/django-crud-generic-view/
 
 delete = DeleteView.as_view()
-# url結びつけ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+# 投稿更新＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+class UpdateView(generic.edit.UpdateView):
+    model = Work
+    success_url = reverse_lazy('timewire:index')
+
+    def update(self, request, *args, **kwargs):
+        result = super().update(request, *args, **kwargs)
+        messages.info(
+            self.request, 'ワークの更新が完了しました')
+        return result
+
+update = UpdateView.as_view()
