@@ -1,0 +1,24 @@
+<!doctype html>
+{% load static %}
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{% block page_title %}base{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+</head>
+<body>
+<div>
+    <p class="base_p">base.htmlに記述した文です</p>
+</div>
+<div class="ui container">
+    {% include '_message.html' %}
+</div>
+<br>
+
+{% block content %}base.htmlです{% endblock %}
+
+{% if user.is_authenticated %}
+<div><a href="{% url 'timewire:logout' %}">ログアウト</a></div>
+{% endif %}
+</body>
+</html>

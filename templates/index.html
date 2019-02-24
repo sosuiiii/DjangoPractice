@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+<a href="index">index</a>
+<a href="base">base</a>
+<a href="login">login</a>
+<a href="register">register</a>
+{% block content %}index.htmlです<br>base.htmlを継承し、block contentを上書きしています。<br>
+ワーク一覧ページの設定です。
+<br>
+<br>
+    <form action="{% url 'timewire:index' %}" method="post" class="ui form">
+    {% for field in form %}
+                <div class="field{% if field.errors %} error{% endif %}">
+                    {# --- 入力フィールド --- #}
+                    <div class="ui input{% if field.errors %} error{% endif %}">
+                        {{ field }}
+                    </div>
+                    {# --- 入力フィールドごとのエラーメッセージ（最初のエラーのみを表示） --- #}
+                    {% if field.errors %}
+                    <p class="red message">{{ field.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+        <button type="submit" class="work_button">ワーク登録</button>
+       {% csrf_token %}
+    </form>
+    <br>
+
+{% for work in works %}
+    <form action="{% url 'timewire:delete' work.id%}" method="post">
+    <div class="wrapping">
+     <div>店舗名: {{ work.name }}</div>
+     <div>時給: {{ work.price }}</div>
+     <div>案件詳細: {{ work.content| linebreaksbr }}</div>
+     <button type="submit">削除</button>
+       {% csrf_token %}
+    </div>
+   </form>
+    <br>
+{% endfor %}
+
+{% endblock %}
