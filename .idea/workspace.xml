@@ -47,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/timewire/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1067">
-              <caret line="134" column="9" lean-forward="true" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
+              <caret line="134" column="9" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -56,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/timewire/test.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/timewire/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -101,12 +101,15 @@
         <entry file="file://$PROJECT_DIR$/timewire/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="257">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -137,6 +140,7 @@
     <option name="width" value="684" />
     <option name="height" value="736" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -318,21 +322,21 @@
       <workItem from="1549991118085" duration="4317000" />
       <workItem from="1549996853052" duration="27965000" />
       <workItem from="1550212073745" duration="7273000" />
-      <workItem from="1550395574399" duration="13757000" />
+      <workItem from="1550395574399" duration="14047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93794000" />
+    <option name="totallyTimeSpent" value="94084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="756" y="117" width="684" height="736" extended-state="0" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.20560747" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.20560747" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32919255" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.25574273" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.38354036" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -342,7 +346,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32932332" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.318323" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.318323" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -462,21 +466,21 @@
     <entry file="file://$PROJECT_DIR$/timewire/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/timewire/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/timewire/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1067">
-          <caret line="134" column="9" lean-forward="true" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
+          <caret line="134" column="9" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -489,8 +493,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/timewire/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
