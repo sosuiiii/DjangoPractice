@@ -3,7 +3,7 @@
 ワーク一覧ページの設定です。
 <br>
 <br>
-    {% for w in works %}
+
      <form method="post" action="{% url 'timewire:update' %}">
     {% for field in form %}
                 <div class="field{% if field.errors %} error{% endif %}">
@@ -16,7 +16,7 @@
                 </div>
 
     {% endfor %}
-
+     {% for w in works %}
         <input type="submit" value="更新">
         {%  csrf_token %}
         </form>

@@ -97,6 +97,7 @@ base = BaseView.as_view()
 # 投稿一覧＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 class IndexView(View):
     def get(self, request, *args, **kwargs):
+
         form = PostForm()
         return render(request, 'index.html', {'works': Work.objects.all().order_by('-date'), 'form': form})
 
@@ -119,12 +120,17 @@ index = IndexView.as_view()
 
 
 class DetailView(View):
-    def get(self, request, id, *args, **kwargs):
-        # return render(request, 'detail.html')
-        work = Work.objects.get(work_id=id)
-        context = {'work': work}
+    def get(self, request, *args, **kwargs):
         form = PostForm()
-        return render(request, 'detail.html', {'form': form},context)
+        return render(request, 'detail.html', {'form':form})
+
+
+        # return render(request, 'detail.html')
+        #
+        # work = Work.objects.get(work_id=id)
+        # context = {'work': work}
+        # form = PostForm()
+        # return render(request, 'detail.html', {'form': form},context)
 
 
 detail = DetailView.as_view()
