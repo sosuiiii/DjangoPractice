@@ -120,9 +120,14 @@ index = IndexView.as_view()
 
 
 class DetailView(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, work_id):
+        work = Work.objects.get(pk=work_id)
         form = PostForm()
-        return render(request, 'detail.html', {'form':form})
+        context = {
+            'form': form,
+            'work': work,
+        }
+        return render(request, 'detail.html', context)
 
 
         # return render(request, 'detail.html')

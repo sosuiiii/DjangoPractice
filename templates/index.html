@@ -34,7 +34,7 @@
          {%  csrf_token %}
         </form>
 
-     <a href="{% url 'timewire:detail' work.id %}">修正する</a>
+     <a href="{% url 'timewire:detail' work_id=work.id %}">修正する</a>
     </div>
     <br>
 {% endfor %}

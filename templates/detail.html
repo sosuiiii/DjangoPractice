@@ -16,10 +16,16 @@
                 </div>
 
     {% endfor %}
-     {% for w in works %}
-        <input type="submit" value="更新">
+     {% if work %}
+         <div class="wrapping">
+          <p>更新前</p>
+          <p>店舗名:{{ work.name }}</p>
+          <p>時給:{{ work.price }}</p>
+          <p>案件詳細:{{ work.content }}</p>
+         </div>
+         <input type="submit" value="更新">
         {%  csrf_token %}
+     {% endif %}
         </form>
-    {% endfor %}
 
 {% endblock %}
