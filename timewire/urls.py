@@ -12,5 +12,5 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('register/', views.register, name='register'),
     path('delete/<int:pk>/', views.delete, name='delete'),
-    path('update/', views.update, name='update'),
+    path('update/<int:pk>', views.update, name='update'),
 ]

@@ -176,6 +176,8 @@ delete = DeleteView.as_view()
 
 class UpdateView(generic.edit.UpdateView):
     model = Work
+    fields = ['name','price','content']
+    template_name = 'detail.html'
     success_url = reverse_lazy('timewire:index')
 
     def update(self, request, *args, **kwargs):
