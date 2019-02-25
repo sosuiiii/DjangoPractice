@@ -180,8 +180,8 @@ class UpdateView(generic.edit.UpdateView):
     template_name = 'detail.html'
     success_url = reverse_lazy('timewire:index')
 
-    def update(self, request, *args, **kwargs):
-        result = super().update(request, *args, **kwargs)
+    def form_valid(self, form):
+        result = super().form_valid(form)
         messages.info(
             self.request, 'ワークの更新が完了しました')
         return result
