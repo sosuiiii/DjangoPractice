@@ -80,6 +80,14 @@ class LogoutView(View):
 
 logout = LogoutView.as_view()
 
+# マイページ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+class MyPageView(View):
+    def get(self,request):
+        return render(request, 'myPage.html',)
+
+myPage = MyPageView.as_view()
+
+
 # ベースビュー＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 class BaseView(View):
@@ -97,9 +105,13 @@ base = BaseView.as_view()
 # 投稿一覧＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-
+        works = Work.objects.all().order_by('-date')
         form = PostForm()
-        return render(request, 'index.html', {'works': Work.objects.all().order_by('-date'), 'form': form})
+        context = {
+            'works': works,
+            'form': form,
+        }
+        return render(request, 'index.html', context)
 
     def post(self, request, *args, **kwargs):
         name = request.POST['name']

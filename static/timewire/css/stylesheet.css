@@ -64,7 +64,7 @@ a{
 }
 .effect p{
   transition: 1s;
-    color: red;
+  color: #5897fb;
 }
 .effect div{
   transition: 1.5s;

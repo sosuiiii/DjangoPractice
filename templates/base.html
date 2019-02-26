@@ -16,8 +16,12 @@
     {% include '_message.html' %}
 </div>
 <br>
-    <a href="/index">index</a>
+{% if user.is_authenticated %}
+<div><a href="{% url 'timewire:logout' %}">ログアウト</a>
+<a href="{% url 'timewire:myPage' %}">マイページ</a></div>
+{% endif %}
     <a href="/base">base</a>
+    <a href="/index">index</a>
     <a href="/login">login</a>
     <a href="/register">register</a>
 <br>
@@ -64,9 +68,7 @@
 
 {% endblock %}
 
-{% if user.is_authenticated %}
-<div><a href="{% url 'timewire:logout' %}">ログアウト</a></div>
-{% endif %}
+
 
 
 {# --- js --- #}

@@ -50,6 +50,7 @@ class Work(models.Model):
     name = models.CharField(verbose_name="店舗名", max_length=255)
     price = models.IntegerField(verbose_name="時給")
     content = models.TextField(verbose_name="案件詳細", null=True, blank=True)
+    user_id = models.IntegerField(verbose_name="ユーザーID", null=True)
     date = models.DateTimeField(default=timezone.now)
 
     def __str___(self):
@@ -58,3 +59,14 @@ class Work(models.Model):
     def get_absolute_url(self):
 
         return reverse('timewire:index')
+
+
+class Check(models.Model):
+    class Meta:
+        db_table = 'check'
+
+    user_id = models.IntegerField(verbose_name='ユーザーID', null=True)
+    work_id = models.IntegerField(verbose_name='ジョブID', null=True)
+
+    def __str__(self):
+        return self.title

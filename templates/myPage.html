@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}myPage.htmlです<br>base.htmlを継承し、block contentを上書きしています。<br>
+マイページの設定です。<br>
+
+
+<div class="wrapping">
+ <p>ユーザー名：{{ user.username }}</p>
+ <p>メールアドレス:{{ user.email }}</p>
+</div>
+
+{% endblock %}
