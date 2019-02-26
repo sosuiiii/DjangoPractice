@@ -4,11 +4,13 @@
 <head>
     <meta charset="utf-8">
     <title>{% block page_title %}base{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <link rel="stylesheet" href="{% static 'timewire/css/stylesheet.css' %}">
+    <link rel="stylesheet" href="{% static 'timewire/js/jquery.js' %}">
 </head>
 <body>
-<div>
-    <p class="base_p">base.htmlに記述した文です</p>
+
+<div class="base_p">
+    <p>base.htmlに記述した文です</p>
 </div>
 <div class="ui container">
     {% include '_message.html' %}
@@ -20,10 +22,58 @@
     <a href="/register">register</a>
 <br>
 <br>
-{% block content %}base.htmlです{% endblock %}
+{% block content %}base.htmlです
+<div class="about-top">
+  <p class="title">↓TIMEBITEとは↓</p>
+  <div class="effect">
+    <p class="i">バイトマッチングサービス</p>
+    <div class="p">
+      <p>好きなときに</p>
+      <p>好きな場所で</p>
+      <p>働きたい</p>
+      <p>そんな想いに応えるために</p>
+      <p>サービスをはじめました。</p>
+    </div>
+
+
+  </div>
+  <div class="effect">
+    <p class="i">頑張る分だけ高時給</p>
+    <div class="p">
+      <p>TIMEBITEでは</p>
+      <p>頑張る分だけ</p>
+      <p>積極的に時給をあげる制度を採用</p>
+      <p>頑張る人には</p>
+      <p>それなりの時給を。</p>
+    </div>
+  </div>
+  <div class="effect">
+    <p class="i">なんで高時給なの？</p>
+    <div class="p">
+      <p>たとえばあなたが</p>
+      <p>一人で二人分働けるとしたら</p>
+      <p>あなたには二人分の給料があって良いのです。</p>
+      <p>本来なら時給1000円のバイトでも</p>
+      <p>時給2000円分の仕事をできるんです。</p>
+      <p>そんな人の時給を</p>
+      <p>積極的に上げていく環境作りに</p>
+      <p>TIMEBITEは尽力しています。</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
 
 {% if user.is_authenticated %}
 <div><a href="{% url 'timewire:logout' %}">ログアウト</a></div>
 {% endif %}
+
+
+{# --- js --- #}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+<script src="{% static 'timewire/js/jquery.js' %}"></script>
+
 </body>
 </html>

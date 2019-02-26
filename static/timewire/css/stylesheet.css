@@ -1,0 +1,91 @@
+.error{
+    color: red;
+    background-color: #fffccf;
+    text-align: center;
+}
+.info {
+    color: blue;
+    background-color: #ddffdd;
+    text-align: center;
+}
+.success{
+
+}
+
+.list{
+    color: red;
+    background-color: #fffccf;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+li {
+    list-style: none;
+}
+
+a{
+    padding: 2px;
+    background-color: #3875d7;
+    border-radius: 3px;
+    border: 1px solid black;
+    color: white;
+    text-decoration: none;
+}
+
+
+/*ここからlogin.html＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+.login-button{
+    color: red;
+    background-color: #ddffdd;
+}
+/*ここまでlogin.html＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+/*ここからindex.html＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+.wrapping{
+    border: 2px solid black;
+}
+/*ここまでindex.html＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+
+
+
+/*ここからbase.html＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+.about-top{
+    text-align: center;
+}
+
+.base_p{
+    color: mediumspringgreen;
+    text-align: center;
+     background-color: #5897fb;
+}
+.effect{
+  margin-bottom: 100px;
+}
+.effect p{
+  transition: 1s;
+    color: red;
+}
+.effect div{
+  transition: 1.5s;
+  transition-delay: 0.5s;
+}
+.about-header{
+  font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  text-align: center;
+  // padding: 20px 0;
+  // box-shadow:2px 2px 4px gray;
+  // border-radius: 40px;
+  // margin: 0 50px;
+}
+.title{
+  margin-bottom: 100px;
+  font-size: 35px;
+  text-shadow: 2px 2px 4px gray;
+}
+.i {
+  font-size: 25px;
+  text-shadow: 2px 2px 4px gray;
+}
+
+/*ここまでbase.html＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
