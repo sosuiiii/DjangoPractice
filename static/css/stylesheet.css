@@ -17,6 +17,11 @@
     text-align: center;
     background-color: #5897fb;
 }
+.list{
+    color: red;
+    background-color: #fffccf;
+    text-align: center;
+}
 
 ul {
     list-style: none;

@@ -122,3 +122,16 @@ class PostForm(forms.Form):
         label='案件詳細',
         widget=forms.Textarea(attrs={'placeholder': '案件詳細'}),
     )
+
+    def clean_name(self):
+        value = self.cleaned_data['name']
+        return value
+
+    def clean_price(self):
+        value = self.cleaned_data['price']
+        return value
+
+    def clean_content(self):
+        value = self.cleaned_data['content']
+        return value
+
