@@ -3,7 +3,7 @@ from django.views import View
 from django.contrib.auth import login as auth_login, logout as auth_logout, authenticate
 from django.urls import reverse
 from django.contrib import messages
-from .models import Work
+from .models import Work, User
 from django.views import generic
 from django.urls import reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
@@ -87,6 +87,16 @@ class MyPageView(View):
 
 myPage = MyPageView.as_view()
 
+# プロフィール＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+class ProfileView(View):
+    def get(self,request, user_id):
+        user = User.objects.get(pk=user_id)
+        context = {
+            'user': user
+        }
+        return render(request, 'profile.html', context)
+
+profile = ProfileView.as_view()
 
 # ベースビュー＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
@@ -199,4 +209,90 @@ class UpdateView(generic.edit.UpdateView):
             self.request, 'ワークの更新が完了しました')
         return result
 
+
 update = UpdateView.as_view()
+
+# マイページ要素＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+
+class GrantView(View):
+    def get(self, request,):
+        return render(request, 'grant.html')
+
+grant = GrantView.as_view()
+
+
+
+class WorkView(View):
+    def get(self, request,):
+        return render(request, 'work.html')
+
+work = WorkView.as_view()
+
+
+
+class FavoriteView(View):
+    def get(self, request,):
+        return render(request, 'favorite.html')
+
+
+favorite = FavoriteView.as_view()
+
+
+
+class BankView(View):
+    def get(self, request,):
+        return render(request, 'bank.html')
+
+
+bank = BankView.as_view()
+
+
+
+
+class ValueView(View):
+    def get(self, request,):
+        return render(request, 'value.html')
+
+
+value = ValueView.as_view()
+
+
+
+
+class QuestionView(View):
+    def get(self, request,):
+        return render(request, 'question.html')
+
+
+question = QuestionView.as_view()
+
+
+
+
+class SettingView(View):
+    def get(self, request,):
+        return render(request, 'setting.html')
+
+
+setting = SettingView.as_view()
+
+
+
+
+class TermView(View):
+    def get(self, request,):
+        return render(request, 'term.html')
+
+
+term = TermView.as_view()
+
+
+
+
+class RankingView(View):
+    def get(self, request,):
+        return render(request, 'ranking.html')
+
+
+ranking = RankingView.as_view()

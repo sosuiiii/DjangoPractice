@@ -14,7 +14,7 @@
       if(scroll > imgPos - windowHeight + windowHeight/1.7){
         $('.i,.p',this).css('opacity','1');
       }else{
-        $('.i,.p',this).css('opacity','0.1');
+        $('.i,.p',this).css('opacity','0');
       }
     });
   });

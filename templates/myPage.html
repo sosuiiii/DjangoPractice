@@ -5,8 +5,25 @@
 
 
 <div class="wrapping">
+ <p>アイコン予定</p>
+ <a href="{% url 'timewire:profile' user_id=user.id %}">プロフィール ></a>
+ <p>ユーザーID:{{ user.id }}</p>
  <p>ユーザー名：{{ user.username }}</p>
  <p>メールアドレス:{{ user.email }}</p>
+ <p>ワーク数</p>
+ <p>ワーク時間</p>
 </div>
+<div class="menu-list">
+<br>
+ <a href="/grant/">給与</a><br><br>
+ <a href="/work/">ワーク</a><br><br>
+ <a href="/favorite/">お気に入り</a><br><br>
+ <a href="/bank/">口座情報</a><br><br>
+ <a href="/value/">評価</a><br><br>
+ <a href="/question/">Q&A</a><br><br>
+ <a href="/setting/">設定</a><br><br>
+ <a href="/term/">利用規約</a><br><br>
+ <a href="/ranking/">ランキング</a><br><br>
 
+</div>
 {% endblock %}

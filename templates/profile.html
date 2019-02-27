@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}profile.htmlです<br>base.htmlを継承し、block contentを上書きしています。<br>
+プロフィールの設定です。
+<br>
+<br>
+<p>{{ user.username }}さんのマイページです。</p>
+<p>性:</p>
+<p>名:</p>
+<p>性別</p>
+<p>住所</p>
+<p>生年月日</p>
+<p>職業</p>
+<p>自己紹介</p>
+<br>
+<br>
+<br>
+<a href="#">編集する</a>
+
+{% endblock %}

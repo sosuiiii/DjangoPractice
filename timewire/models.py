@@ -67,6 +67,3 @@ class Check(models.Model):
 
     user_id = models.IntegerField(verbose_name='ユーザーID', null=True)
     work_id = models.IntegerField(verbose_name='ジョブID', null=True)
-
-    def __str__(self):
-        return self.title
