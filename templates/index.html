@@ -4,6 +4,13 @@
 ワーク一覧ページの設定です。
 <br>
 <br>
+    <p>店舗名</p>
+    <form action="{% url 'timewire:search' %}" method="get">
+    <input type="text" name="name">
+    <input type="submit" value="検索">
+    </form>
+    <br>
+    <p>登録</p>
     <form action="{% url 'timewire:index' %}" method="post" class="ui form">
     {% for field in form %}
                 <div class="field{% if field.errors %} error{% endif %}">

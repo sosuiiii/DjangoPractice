@@ -10,6 +10,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 
 from .forms import LoginForm, RegisterForm, PostForm
+from .models import Work
 
 # Create your views here.
 
@@ -296,3 +297,17 @@ class RankingView(View):
 
 
 ranking = RankingView.as_view()
+
+# 検索＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+class SearchView(View):
+    def get(self, request, *args, **kwargs):
+        name = request.GET.get('name')
+
+        # if name:
+        works = Work.objects.get(name=name)
+        # print(works)
+
+        return render(request, 'search.html', {'works':works})
+
+search = SearchView.as_view()
+# ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
