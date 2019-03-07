@@ -20,6 +20,7 @@
 <div><a href="{% url 'timewire:logout' %}">ログアウト</a>
 <a href="{% url 'timewire:myPage' %}">マイページ</a></div><br>
 {% endif %}
+    <a href="/">search</a>
     <a href="/base">base</a>
     <a href="/index">index</a>
 {% if not user.is_authenticated %}

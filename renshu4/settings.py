@@ -38,7 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'timewire.apps.TimewireConfig',
+    'crispy_forms',
+    'django_filters',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,3 +131,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 AUTH_USER_MODEL = 'timewire.User'
+
+# 管理サイトのログイン機能を通常のログイン機能として使う
+# LOGIN_URL='admin:login'
+# LOGOUT_REDIRECT_URL='/'
+
+# django-crispy-forms 設定
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'

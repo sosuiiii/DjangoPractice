@@ -8,8 +8,11 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
+from django.db.models import Q
+import logging
+logger = logging.getLogger('development')
 
-from .forms import LoginForm, RegisterForm, PostForm
+from .forms import LoginForm, RegisterForm, PostForm, WorkForm
 from .models import Work
 
 # Create your views here.
@@ -112,8 +115,69 @@ class BaseView(View):
 
 
 base = BaseView.as_view()
-
+from django.db.models import Q
 # 投稿一覧＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+class LndexView(generic.ListView):
+    paginate_by = 5
+    template_name = 'search.html'
+    model = Work
+    def post(self, request, *args, **kwargs):
+        form_value = [
+            self.request.POST.get('name', None),
+            self.request.POST.get('price', None),
+        ]
+        request.session['form_value'] = form_value
+        # 検索時にページネーションに関連したエラーを防ぐ
+        self.request.GET = self.request.GET.copy()
+        self.request.GET.clear()
+
+        return self.get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # sessionに値がある場合、その値をセットする。
+        # ページングしてもform値が変わらないように
+        name = ''
+        price = ''
+        if 'form_value' in self.request.session:
+            form_value = self.request.session['form_value']
+            name = form_value[0]
+            price = form_value[1]
+
+        default_data = {
+            'name': name,
+            'price': price,
+        }
+
+        test_form = WorkForm(initial=default_data)
+        context['test_form'] = test_form
+
+        return context
+
+    def get_queryset(self):
+
+        # sessionに値がある場合、その値でクエリ発行する
+        if 'form_value' in self.request.session:
+            form_value = self.request.session['form_value']
+            name = form_value[0]
+            price = form_value[1]
+
+            # 検索条件
+            condition_name = Q()
+            condition_price = Q()
+
+            if len(name) != 0 and name[0]:
+                condition_name = Q(name__icontains=name)
+            if len(price) != 0 and price[0]:
+                condition_price = Q(price__icontains=price)
+
+            return Work.objects.select_related().filter(condition_name & condition_price).order_by('-date')
+        else:
+            # 何も返さない
+            return Work.objects.none()
+
+
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         works = Work.objects.all().order_by('-date')
@@ -122,6 +186,7 @@ class IndexView(View):
             'works': works,
             'form': form,
         }
+
         return render(request, 'index.html', context)
 
     def post(self, request, *args, **kwargs):
@@ -302,10 +367,7 @@ ranking = RankingView.as_view()
 class SearchView(View):
     def get(self, request, *args, **kwargs):
         name = request.GET.get('name')
-
-        # if name:
         works = Work.objects.get(name=name)
-        # print(works)
 
         return render(request, 'search.html', {'works':works})
 

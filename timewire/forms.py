@@ -135,3 +135,16 @@ class PostForm(forms.Form):
         value = self.cleaned_data['content']
         return value
 
+class WorkForm(forms.Form):
+    name = forms.CharField(
+        initial='',
+        label='店舗名',
+        widget=forms.TextInput(attrs={'placeholder':'店舗名'}),
+        required = False,
+    )
+    price = forms.IntegerField(
+        initial='',
+        label='時給',
+        widget=forms.TextInput(attrs={'placeholder':'時給'}),
+        required = False,
+    )

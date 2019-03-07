@@ -2,10 +2,30 @@
 
 {% block content %}
 
-<h2>検索結果</h2>
-<div class="wrapping">
-ID：{{ works.id }}<br>
-店舗名：{{ works.name }}<br>
-案件詳細：{{ works.content }}
+
+
+
+
+検索
+<form method="POST">
+    {% csrf_token %}
+    {%  for field in test_form %}
+        {{ field }}
+    {% endfor %}
+    <input type="submit" value="検索">
+</form>
+    <br><br>
+検索結果<br>
+{% if object_list|length == 0 %}
+    検索結果が存在しません
+{% else %}
+
+    {% for post in object_list %}
+        <div class="wrapping">
+    店舗名：{{ post.name }}<br>
+    時給：{{ post.price }}<br>
+    案件詳細：{{ post.content|linebreaksbr }}</div>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}
-</div>

@@ -1,10 +1,11 @@
 from django.urls import path
 from . import views
 
+
 app_name = 'timewire'
 
 urlpatterns = [
-    path('', views.index, name='register'),
+    path('', views.LndexView.as_view(),name='Lndex'),
     path('base/', views.base, name='base',),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
