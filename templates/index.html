@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}index.htmlです<br>base.htmlを継承し、block contentを上書きしています。<br>
 ワーク一覧ページの設定です。
 <br>
@@ -33,22 +34,23 @@
 {#    {{ post.price }}#}
 {#    {% endfor %}#}
 
-    <p>店舗名</p>
-    <form action="{% url 'timewire:search' %}" method="get">
-    <input type="text" name="name">
-    <input type="submit" value="検索">
-    {% csrf_token %}
-    </form>
-    <br>
-    <p>登録</p>
+{#    <p>店舗名(失敗作。完成品はsearchから)</p>#}
+{#    <form action="{% url 'timewire:search' %}" method="get">#}
+{#    <input type="text" name="name">#}
+{#    <input type="submit" value="検索">#}
+{#    {% csrf_token %}#}
+{#    </form>#}
+{#    <br>#}
+
+    <h2>登録</h2>
     <form action="{% url 'timewire:index' %}" method="post" class="ui form">
     {% for field in form %}
                 <div class="field{% if field.errors %} error{% endif %}">
-                    {# --- 入力フィールド --- #}
+{#                     --- 入力フィールド ---#}
                     <div class="ui input{% if field.errors %} error{% endif %}">
                         {{ field }}
                     </div>
-                    {# --- 入力フィールドごとのエラーメッセージ（最初のエラーのみを表示） --- #}
+{#                     --- 入力フィールドごとのエラーメッセージ（最初のエラーのみを表示） ---#}
                     {% if field.errors %}
                     <p class="red message">{{ field.errors.0 }}</p>
                     {% endif %}

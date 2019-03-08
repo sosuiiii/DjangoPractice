@@ -11,6 +11,8 @@ from django.utils import timezone
 from django.db.models import Q
 import logging
 logger = logging.getLogger('development')
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 from .forms import LoginForm, RegisterForm, PostForm, WorkForm
 from .models import Work
@@ -116,9 +118,9 @@ class BaseView(View):
 
 base = BaseView.as_view()
 from django.db.models import Q
-# 投稿一覧＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+# 投稿検索＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 class LndexView(generic.ListView):
-    paginate_by = 5
+    paginate_by = 3
     template_name = 'search.html'
     model = Work
     def post(self, request, *args, **kwargs):
@@ -170,12 +172,16 @@ class LndexView(generic.ListView):
             if len(name) != 0 and name[0]:
                 condition_name = Q(name__icontains=name)
             if len(price) != 0 and price[0]:
-                condition_price = Q(price__icontains=price)
+                condition_price = Q(price__gte=price)
 
             return Work.objects.select_related().filter(condition_name & condition_price).order_by('-date')
         else:
             # 何も返さない
             return Work.objects.none()
+
+# http://intellectual-curiosity.tokyo/2019/02/27/django%E3%81%A7listview%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6%E6%A4%9C%E7%B4%A2%E7%94%BB%E9%9D%A2%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/
+
+# 投稿一覧＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 
 class IndexView(View):
@@ -204,7 +210,6 @@ class IndexView(View):
 index = IndexView.as_view()
 
 # 投稿詳細＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-#
 
 
 class DetailView(View):
@@ -364,12 +369,32 @@ class RankingView(View):
 ranking = RankingView.as_view()
 
 # 検索＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-class SearchView(View):
-    def get(self, request, *args, **kwargs):
-        name = request.GET.get('name')
-        works = Work.objects.get(name=name)
+# class SearchView(View):
+#     def get(self, request, *args, **kwargs):
+#         name = request.GET.get('name')
+#         works = Work.objects.get(name=name)
+#
+#         return render(request, 'search.html', {'works':works})
+#
+# search = SearchView.as_view()
 
-        return render(request, 'search.html', {'works':works})
+def paginate_queryset(request,queryset,count):
+    paginator = Paginator(queryset,count)
+    page = request.GET.get('page')
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+    return page_obj
 
-search = SearchView.as_view()
-# ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+def post_index(request):
+    post_list = Work.objects.all()
+    page_obj = paginate_queryset(request,post_list,1)
+    context = {
+        'post_list':page_obj.object_list,
+        'page_obj':page_obj,
+    }
+    return render(request,'search.html',context)

@@ -138,3 +138,5 @@ AUTH_USER_MODEL = 'timewire.User'
 
 # django-crispy-forms 設定
 # CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+PAGE_PER_ITEM = 5
